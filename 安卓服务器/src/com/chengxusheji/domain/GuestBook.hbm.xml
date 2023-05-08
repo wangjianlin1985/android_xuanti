@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chengxusheji.domain">
+
+	<class name="GuestBook" table="GuestBook">
+
+          <!-- 主键记录id -->
+          <id name="guestBookId" column="guestBookId">
+            <generator class="native"/>
+          </id>
+
+          <!-- 简单字符串属性: 标题 -->
+          <property
+            name="qustion"
+            column="qustion"
+            type="string"
+            length="200"
+          />
+
+          <!-- 多对一属性: 提问学生 -->
+          <many-to-one name="student"
+            column="student"
+            class="Student"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 简单字符串属性: 提问时间 -->
+          <property
+            name="questionTime"
+            column="questionTime"
+            type="string"
+            length="20"
+          />
+
+          <!-- 简单字符串属性: 老师回复 -->
+          <property
+            name="reply"
+            column="reply"
+            type="string"
+            length="200"
+          />
+
+          <!-- 多对一属性: 解答老师 -->
+          <many-to-one name="teacherObj"
+            column="teacherObj"
+            class="Teacher"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 简单字符串属性: 回复时间 -->
+          <property
+            name="replyTime"
+            column="replyTime"
+            type="string"
+            length="20"
+          />
+
+          <!-- 简单整型属性: 回复标志 -->
+          <property
+            name="replyFlag"
+            column="replyFlag"
+            type="int"
+
+          />
+
+
+		 
+		
+	</class>
+	
+</hibernate-mapping>
+ 
